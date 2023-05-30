@@ -12,8 +12,8 @@
       <router-link class="nav" to="/diary">Diary</router-link>
       <router-link class="nav" to="/">Login</router-link>
     </nav>
+      <router-view/>
   </div>
-  <router-view/>
 </template>
 
 <style scoped>
