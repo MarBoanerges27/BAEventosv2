@@ -36,7 +36,7 @@ export default {
     },
      methods:{
         Registrarse(){
-            window.location.href = "/start"
+            window.location.href = "/inicio"
         },
 
         iniciar(){

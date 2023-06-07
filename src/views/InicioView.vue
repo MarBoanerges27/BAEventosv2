@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import Start from '../components/Start.vue';
+import Start from '../components/Inicio.vue';
 export default {
   components:{
     Start

@@ -8,9 +8,9 @@
       <img src="./assets/img/logo-eventos.png" alt="" height="100">
     </header>
     <nav class="contenedor-nav">
-      <router-link class="nav" to="/start">Start</router-link>
-      <router-link class="nav" to="/diary">Diary</router-link>
-      <router-link class="nav" to="/">Login</router-link>
+      <router-link class="nav" to="/start">Inicio</router-link>
+      <router-link class="nav" to="/diary">Evento</router-link>
+      <router-link class="nav" to="/">Perfil</router-link>
     </nav>
       <router-view/>
   </div>

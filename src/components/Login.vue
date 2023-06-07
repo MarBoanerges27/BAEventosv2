@@ -28,7 +28,7 @@
 </template>
 
 <script>
-export default {
+export default{
   data(){
     return{
       email: '',
@@ -38,7 +38,7 @@ export default {
   methods:{
     LogIn(){
       if(this.email != '' && this.password != ''){
-        window.location.href = "/Start"
+        window.location.href = "/Inicio"
       }
     },
     RestablecerContraseña(){
