@@ -14,37 +14,49 @@
 
       <h4 class="titulo">Contraseña:</h4>
       <input class="input-login" type="password"  v-model="password" required>
+      
       <div class="contenedor-button">
         <button class="button-login" @click.prevent="LogIn">Ingresar</button>
       </div>
     </form>
 
     <div class="contenedor-register">
-        <button >Restablecer Contraseña</button>
-        <button>Registrarse</button>
+        <button class="button-contraseña" @click.prevent="RestablecerContraseña">Restablecer Contraseña</button>
+        <button class="button-registrarse" @click.prevent="Registrarse">Registrarse</button>
     </div>
   </main>
 </template>
 
 <script>
-export default {
+export default{
   data(){
     return{
       email: '',
       password: '',
     }
   },
-   methods:{
+  methods:{
     LogIn(){
       if(this.email != '' && this.password != ''){
-        window.location.href = "/Start"
+        window.location.href = "/Inicio"
       }
+    },
+    RestablecerContraseña(){
+        window.location.href = "/restorePassword"
+    },
+    Registrarse(){
+        window.location.href = "/register"
     }
    }
 }
 </script>
 
 <style scoped>
+
+.button-registrarse,.button-contraseña {
+  background: transparent;
+  border: 0px;
+}
 .contenedor-svg{
   width: 100%;
   display: flex;
