@@ -10,7 +10,7 @@ const apiUsuario = axios.create({
 export default {
     async cargarUsuario() {
         try {
-            const response = await apiUsuario.get('/lista');
+            const response = await apiUsuario.get('/');
             console.log(response.data)
             return response.data
         } catch (error) {
@@ -20,7 +20,7 @@ export default {
 
     async agregarUsuario(elem) {
         try {
-            await apiUsuario.post('/lista', elem);
+            await apiUsuario.post('/', elem);
         } catch (error) {
             throw "Error de conexion"
         }
@@ -28,15 +28,16 @@ export default {
 
     async eliminarUsuario(id) {
         try {
-            await apiUsuario.delete("/lista/" + id)
+            await apiUsuario.delete("/" + id)
         } catch (error) {
             throw "Error de conexion"
         }
     },
 
-    async modificarUsuario(id, elem) {
+    async modificarUsuario(id) {
         try {
-            await apiUsuario.put("/lista/" + id, elem)
+            const elem = { ...this.elemento }
+            await apiUsuario.put("/" + id, elem)
         } catch (error) {
             throw "Error de conexion"
         }

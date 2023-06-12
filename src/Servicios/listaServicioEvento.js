@@ -33,9 +33,11 @@ export default {
         }
     },
 
-    async modificarEvento(id, elem) {
+    async modificarEvento(id) {
         try {
-            await apiEvento.put("/lista/" + id, elem)
+            const elem = { ...this.elemento }
+            await apiEvento.put("/" + id, elem)
+            await cargarLista()
         } catch (error) {
             throw "Error de conexion"
         }
