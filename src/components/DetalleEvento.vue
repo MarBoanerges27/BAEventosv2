@@ -1,9 +1,9 @@
 <template>
   <h1>Prueba</h1>
-  <div v-for="evento in eventos" :key="evento.id">
+<!--   <div v-for="evento in eventos" :key="evento.id">
 <h1>{{evento.titulo}}</h1>
 <h1>{{evento.tipo}}</h1>
-  </div> 
+  </div> --> 
 </template>
 
 <script>
