@@ -27,8 +27,7 @@
                 <p>Fecha: {{e.fecha}} </p>
             </div>
             <img class="card-img" :src="e.img" alt="">
-            <button type="button" class="btn btn-primary">Primary</button>
-
+           <button type="button" class="btn btn-warning">Detalles</button>
         </div>
     </template>
      <P v-if="eventos.length == 0">No hay eventos seleccionados</P>
@@ -37,6 +36,7 @@
 
 <script>
 import listaServicioEvento from "../Servicios/listaServicioEvento";
+
 export default {
   components: {
     listaServicioEvento,
@@ -99,6 +99,7 @@ export default {
 
 <style scope>
 
+
 .contenedor-buscadores{
     width: 100%;
     display: flex;
@@ -120,13 +121,16 @@ export default {
     padding: 10px;
     background-color: #FDECBB;
     margin: 1rem;
-    width: 20rem;
-    height: 23rem;
+    width: 21rem;
     border-radius: 10px;
 }
 
-html{
+/* html{
   background-color: #FBD156;
+} */
+
+body{
+    background-color: #FBD156;
 }
 
 .search{
