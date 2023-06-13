@@ -4,6 +4,7 @@ import LoginView from '../views/LoginView.vue';
 const router = createRouter({
   history: createWebHistory(),
   routes: [
+
     { path: '/', component: LoginView },//login
     { path: '/detalle', component: import('../views/DetalleEventoView.vue') },
     { path: '/inicio', component: import('../views/InicioView.vue') },
@@ -15,6 +16,9 @@ const router = createRouter({
     { path: '/buscar', component: import('../views/BuscarEventoView.vue') },
     { path: '/eventos', component: import('../views/EventosView.vue') },
     { path: '/usuarios', component: import('../views/UsuariosView.vue') },
+    
+    {path: '/logout', component: import('../views/logoutView.vue')},
+
 
   ]
 })

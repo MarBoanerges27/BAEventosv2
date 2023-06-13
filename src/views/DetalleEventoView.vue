@@ -7,12 +7,12 @@
 
 
 <script>
-import DetalleEvento from '../components/DetalleEvento.Vue'
+/* import DetalleEvento from '../components/DetalleEvento.Vue'
 export default{
   components: {
     DetalleEvento
   }
-}
+} */
 </script>
 
 <style>
