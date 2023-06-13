@@ -27,6 +27,8 @@
                 <p>Fecha: {{e.fecha}} </p>
             </div>
             <img class="card-img" :src="e.img" alt="">
+            <button type="button" class="btn btn-primary">Primary</button>
+
         </div>
     </template>
      <P v-if="eventos.length == 0">No hay eventos seleccionados</P>
