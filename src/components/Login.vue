@@ -31,47 +31,77 @@
 
 <script>
 import { useLoginStore }  from '../stores/login'
+import { storeToRefs } from 'pinia';
+import listaServicioUsuario from "../Servicios/listaServicioUsuario";
 import Swal from 'sweetalert2'
 export default{
+   components: {
+    listaServicioUsuario,
+  },
   data(){
     return{
-      email: '',
+      usuarios: [],
+       email: '',
       password: '',
     }
   },
   setup() {
     const store = useLoginStore();
     const login = store;
+    const usuarioLogear = storeToRefs(store);
     return login;
   },
   methods:{
-    LogIn(){
-      if(this.email != '' && this.password != ''){
-        this.login()
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'Ingreso exitoso',
-          showConfirmButton: false,
-          timer: 1500
-        })
-        this.$router.push("/Inicio")
-      }else{
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Error al Ingresar!',
-        })
-      }
-    },
-    RestablecerContraseña(){
-      this.$router.push("/restorePassword")
-    },
-    Registrarse(){
-      this.$router.push("/register")
-    }
-   }
-}
+      async LogIn(){
+        if(this.email != '' && this.password != ''){
+          this.usuarios = await listaServicioUsuario.cargarUsuario();
+
+          this.usuarioLogear = [...this.usuarios.filter(usuario => usuario.email == this.email)]
+          if(this.usuarioLogear != {}){
+            if(this.usuarioLogear[0].contrasenia == this.password){
+              this.login()
+              Swal.fire({
+                position: 'center', 
+                icon: 'success',
+                title: 'Ingreso exitoso',
+                showConfirmButton: false,
+                timer: 1500
+              })
+              this.$router.push("/Inicio")
+            }else{
+              Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Contraseña incorrecta!',
+              })
+            }
+          }else{
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'No se a encontrado el email ingresado!',
+            })
+          }
+        }else{
+          Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Ingrese su email y contraseña!',
+          })
+        }
+        
+       },
+       RestablecerContraseña(){
+        this.$router.push("/restorePassword")
+       },
+       Registrarse(){
+        this.$router.push("/register")
+       }
+
+      },
+
+ 
+  }
 </script>
 
 <style scoped>

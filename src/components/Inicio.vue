@@ -1,6 +1,6 @@
 <template>
   <main>
-    <div class="contenedor-buscadores">
+    <div class="contenedor-buscadores" >
         <div v-for="tipo in ArrayTipo" :key="tipo">
             <input  type="checkbox" :value="tipo" :id="tipo" v-model="categoriasSeleccionadas" checked>         
             <label :for="tipo">
@@ -19,15 +19,20 @@
         <h1 class="subtitulo-inicio">Eventos de su interes</h1>
     </div>
     
-    <template v-for="e of eventos" :key="e.id">
-        <div class="contenedor-card" data-aos="fade-up">
-            <div>
-                <p>Evento: {{e.titulo}}</p>
-                <p>Direccion: {{e.direccion}}</p>
-                <p>Fecha: {{e.fecha}} </p>
+    <template v-for="e of eventos" :key="e.id" >
+        <div class="card" style="width: 18rem; margin: 1rem" data-aos="fade-left">
+            <img :src="e.img" class="card-img-top ">
+            <div class="card-body">
+                <h5 class="card-title">{{e.titulo}} </h5>
             </div>
-            <img class="card-img" :src="e.img" alt="">
-           <button type="button" class="btn btn-warning">Detalles</button>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Direccion: {{e.direccion}}</li>
+                <li class="list-group-item">Fecha: {{e.fecha}} </li>
+            </ul>
+            <div class="card-body">
+                <a href="#" class="card-link">Detalles</a>
+                <a href="#" class="card-link">Asistir</a>
+            </div>
         </div>
     </template>
      <P v-if="eventos.length == 0">No hay eventos seleccionados</P>
@@ -98,7 +103,9 @@ export default {
 </script>
 
 <style scope>
-
+.card{
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
 
 .contenedor-buscadores{
     width: 100%;

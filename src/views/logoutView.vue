@@ -4,10 +4,10 @@
 
 <script>
 import { useLoginStore }  from '../stores/login'
-import Swal from 'sweetalert2'
 export default {
   data() {
     return {
+       usuario: {nombre: '', apellido: '', email: '', contrasenia: '', fotoPerfil: '', rol: '', id: ''}
     };
   },
   setup() {
@@ -18,7 +18,6 @@ export default {
   computed: {
     getout(){
         this.logout()
-/*         this.usuario = {email: "" ,password: ""} */
         this.$router.push("/");
     }
   },

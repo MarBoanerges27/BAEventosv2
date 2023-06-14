@@ -1,16 +1,16 @@
 <template>
       <form class="formulario">
       <h4 class="titulo">Nombre:</h4>
-      <input class="input-login" type="email" v-model="nombre" required>
+      <input class="input-login" type="text" v-model="nombre" required>
 
       <h4 class="titulo">Apellido:</h4>
-      <input class="input-login" type="password"  v-model="apellido" required>
+      <input class="input-login" type="text"  v-model="apellido" required>
 
       <h4 class="titulo">Email:</h4>
-      <input class="input-login" type="password"  v-model="email" required>
+      <input class="input-login" type="email"  v-model="email" required>
 
       <h4 class="titulo">Contraseña:</h4>
-      <input class="input-login" type="password"  v-model="contraseña" required>
+      <input class="input-login" type="password"  v-model="contrasenia" required>
       <h4 class="titulo">Repetir contraseña:</h4>
       <input class="input-login" type="password"  v-model="repetirContraseña" required>
       <div class="contenedor-button">
@@ -24,25 +24,61 @@
 </template>
 
 <script>
+import { useLoginStore }  from '../stores/login'
+import { storeToRefs } from 'pinia';
+import listaServicioUsuario from "../Servicios/listaServicioUsuario";
+import Swal from 'sweetalert2'
 export default {
     data(){
         return{
+            usuario: {nombre: 'pe', apellido: 'pe', email: '', contrasenia: '', fotoPerfil: '', rol: '', id: ''},
+            usuarios: [],          
             nombre: '',
             apellido: '',
             email: '',
-            contraseña: '',
+            contrasenia: '',
             repetirContraseña: '',
         }
     },
-     methods:{
-        Registrarse(){
-            window.location.href = "/inicio"
+    setup() {
+        const store = useLoginStore();
+        const login = store;
+        const usuarioLogear = storeToRefs(store);
+        return login;
+    },
+    methods:{
+        async Registrarse(){
+            this.usuarios = await listaServicioUsuario.cargarUsuario();
+
+          if(this.email != '' && this.password != ''){
+
+                this.usuario = [...this.usuarios.filter(usuario => usuario.email == this.email)]
+                if(this.usuario.email != this.email){
+
+                   await listaServicioUsuario.agregarUsuario(this.usuario);
+                   this.login()
+                   this.$router.push("/Inicio")
+                }else{
+                  Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'Email ya registrado',
+                  })
+                }
+          }else{
+                  Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'Ingrese su email o contraseña!',
+                  })
+          }
+                
         },
 
         iniciar(){
-            window.location.href = "/"
+            this.$router.push("/")
         }
-   }
+    }
     
 }
 </script>
