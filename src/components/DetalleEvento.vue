@@ -1,16 +1,17 @@
 <template>
   <div class="contenedor">
     <div class="contenedor-img">
-      <img class="img-div" src="https://media.tycsports.com/files/2022/02/02/385959/the-avengers-endgame-_w416.jpg" alt="">
+      <img class="img-div" :src="evento.img" alt="">
       
     </div>
       <div class="titulo">
-        <h1>Avenger</h1>
-        <h2>Fecha: 19-02-2023</h2>
-        <h2>Direccion: Av.Belgrano 2345</h2>
-        <h2>Tipo evento: Cine</h2>
+        <h1>Titulo: {{evento.titulo}}</h1>
+        <h2>Fecha: {{evento.fecha}}</h2>
+        <h2>Direcicon: {{evento.direccion}}</h2>
+        <h2>Tipo evento: {{evento.titulo}}</h2>
       </div>
     <div class="descripccion">
+
       <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.
          Laudantium veniam deleniti saepe ullam. Accusantium harum necessitatibus
           pariatur iusto, et aliquid, deleniti iste laudantium dolorem ipsa non recusandae
@@ -31,17 +32,17 @@ export default {
   data() {
 
     return {
-        eventos : []
+        eventos : [],
+        evento: {},
     };
   },
   methods: {
-    devolverEvento(id) {
-      //buscar evento y devolverlo!
-    },
-  },
+    async devolverEvento() {
+      let id = 1
+       this.eventos = await listaServicioEvento.cargarEvento();
 
-  async mounted() {
-    this.eventos = await listaServicioEvento.cargarEvento();
+       this.evento = this.eventos.filter(evento => evento.id == id)
+    },
   },
 };
 </script>
