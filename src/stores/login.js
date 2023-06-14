@@ -1,7 +1,11 @@
+
 import { defineStore } from "pinia";
 export const useLoginStore = defineStore("login", {
   state: () => {
-    return { isLogin: false };
+    return { 
+      usuario: {nombre: 'pe', apellido: 'pe', email: '', contrasenia: '', fotoPerfil: '', rol: '', id: ''},
+      isLogin: false 
+    };
   },
   actions: {
     logout() {
@@ -9,6 +13,7 @@ export const useLoginStore = defineStore("login", {
     },
     login() {
       this.isLogin = true;
+      console.log(this.usuario)
     },
   },
 });

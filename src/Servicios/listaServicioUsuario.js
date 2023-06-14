@@ -10,7 +10,7 @@ const apiUsuario = axios.create({
 export default {
     async cargarUsuario() {
         try {
-            const response = await apiUsuario.get('/lista');
+            const response = await apiUsuario.get('/');
             console.log(response.data)
             return response.data
         } catch (error) {
@@ -20,7 +20,7 @@ export default {
 
     async agregarUsuario(elem) {
         try {
-            await apiUsuario.post('/lista', elem);
+            await apiUsuario.post('/', elem);
         } catch (error) {
             throw "Error de conexion"
         }

@@ -3,9 +3,15 @@ import { storeToRefs } from 'pinia';
 import { useLoginStore }  from './stores/login'
 
 export default{
+  data(){
+      return{
+        usuario: {},
+      }
+    },
   setup() {
     const store = useLoginStore();
     const { isLogin } = storeToRefs(store);
+
     return { isLogin };
   },
 }
@@ -24,9 +30,11 @@ export default{
       <router-link v-if="isLogin"  class="nav" to="/perfil">Perfil</router-link>
       <router-link v-if="!isLogin" class="nav" to="/">login</router-link>
       <router-link v-if="isLogin" class="nav" to="/logout">logout</router-link>
-      
+       
     </nav>
+   
       <router-view/>
+
   </div>
 </template>
 
