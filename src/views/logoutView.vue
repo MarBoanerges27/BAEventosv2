@@ -1,29 +1,28 @@
 <template>
-{{getout}}
-</template>
-
-<script>
-import { useLoginStore }  from '../stores/login'
-import Swal from 'sweetalert2'
-export default {
-  data() {
-    return {
-    };
-  },
-  setup() {
-    const store = useLoginStore();
-    const logout = store;
-    return logout;
-  },
-  computed: {
-    getout(){
-        this.logout()
-/*         this.usuario = {email: "" ,password: ""} */
-        this.$router.push("/");
-    }
-  },
-};
-</script>
-
-<style>
-</style>
+  {{getout}}
+  </template>
+  
+  <script>
+  import { useLoginStore }  from '../stores/login'
+  export default {
+    data() {
+      return {
+         usuario: {nombre: '', apellido: '', email: '', contrasenia: '', fotoPerfil: '', rol: '', id: ''}
+      };
+    },
+    setup() {
+      const store = useLoginStore();
+      const logout = store;
+      return logout;
+    },
+    computed: {
+      getout(){
+          this.logout()
+          this.$router.push("/");
+      }
+    },
+  };
+  </script>
+  
+  <style>
+  </style>

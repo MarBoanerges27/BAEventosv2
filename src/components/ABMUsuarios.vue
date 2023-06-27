@@ -1,31 +1,43 @@
 <template>
-  <h1>Usuarios</h1>
+  <h1 class="display-1">Usuarios</h1>
+  <!--
+  <button
+    type="button"
+    class="btn btn-secondary btn-lg btn-block"
+    @click="agregarUsuario()"
+  >
+    Agregar Usuario</button
+  >Hacer el agregar evento-->
   <!--Tabla-->
   <table class="table">
-    <div>
-      <!--Filas-->
-      <thead>
-        <tr>
-          <th>Nombre</th>
-          <th>Apellido</th>
-          <th>E-mail</th>
-        </tr>
-      </thead>
-    </div>
-    <div v-for="usuario in lista" :key="usuario.id">
+    <thead>
       <tr>
-        <td>{{ usuario.nombre }}</td>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido</th>
+        <th scope="col">E-mail</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+
+    <tbody v-for="usuario in lista" :key="usuario.id">
+      <tr>
+        <th scope="row">{{ usuario.nombre }}</th>
         <td>{{ usuario.apellido }}</td>
         <td>{{ usuario.email }}</td>
         <td>
-          <!--<button @click="listaServicioEvento.agregarEvento()">Agregar</button>-->
-          <button @click="listaServicioUsuario.modificarEvento(usuario.id)">
+          <!--<button class="btn btn-light" @click="listaServicioEvento.agregarEvento()">Agregar</button>-->
+          <button
+            class="btn btn-light"
+            @click="listaServicioUsuario.modificarEvento(usuario.id)"
+          >
             Editar
           </button>
-          <button @click="eliminar(usuario.id)">Eliminar</button>
+          <button class="btn btn-danger" @click="eliminar(usuario.id)">
+            Eliminar
+          </button>
         </td>
       </tr>
-    </div>
+    </tbody>
   </table>
 </template>
 

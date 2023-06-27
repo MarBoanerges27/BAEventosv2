@@ -43,4 +43,13 @@ export default {
         }
     },
 
+    async cargarEventoPorId(id) {
+        try {
+          const response = await apiEvento.get("/" + id);
+          return response.data;
+        } catch (error) {
+          throw "Error de conexión";
+        }
+      },
+
 }
